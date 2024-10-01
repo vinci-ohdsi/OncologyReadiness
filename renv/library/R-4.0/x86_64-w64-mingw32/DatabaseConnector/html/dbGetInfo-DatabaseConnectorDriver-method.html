@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get DBMS metadata</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for dbGetInfo,DatabaseConnectorDriver-method {DatabaseConnector}"><tr><td>dbGetInfo,DatabaseConnectorDriver-method {DatabaseConnector}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Get DBMS metadata</h2>
+
+<h3>Description</h3>
+
+<p>Retrieves information on objects of class <a href="../../DBI/html/DBIDriver-class.html">DBIDriver</a>,
+<a href="../../DBI/html/DBIConnection-class.html">DBIConnection</a> or <a href="../../DBI/html/DBIResult-class.html">DBIResult</a>.
+</p>
+
+
+
+<h3>Usage</h3>
+
+<pre>
+## S4 method for signature 'DatabaseConnectorDriver'
+dbGetInfo(dbObj, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dbObj</code></td>
+<td>
+<p>An object inheriting from <a href="../../DBI/html/DBIObject-class.html">DBIObject</a>,
+i.e. <a href="../../DBI/html/DBIDriver-class.html">DBIDriver</a>, <a href="../../DBI/html/DBIConnection-class.html">DBIConnection</a>,
+or a <a href="../../DBI/html/DBIResult-class.html">DBIResult</a></p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments to methods.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>For objects of class <a href="../../DBI/html/DBIDriver-class.html">DBIDriver</a>, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:
+</p>
+
+<ul>
+<li> <p><code>driver.version</code>: the package version of the DBI backend,
+</p>
+</li>
+<li> <p><code>client.version</code>: the version of the DBMS client library.
+</p>
+</li></ul>
+
+<p>For objects of class <a href="../../DBI/html/DBIConnection-class.html">DBIConnection</a>, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:
+</p>
+
+<ul>
+<li> <p><code>db.version</code>: version of the database server,
+</p>
+</li>
+<li> <p><code>dbname</code>: database name,
+</p>
+</li>
+<li> <p><code>username</code>: username to connect to the database,
+</p>
+</li>
+<li> <p><code>host</code>: hostname of the database server,
+</p>
+</li>
+<li> <p><code>port</code>: port on the database server.
+It must not contain a <code>password</code> component.
+Components that are not applicable should be set to <code>NA</code>.
+</p>
+</li></ul>
+
+<p>For objects of class <a href="../../DBI/html/DBIResult-class.html">DBIResult</a>, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:
+</p>
+
+<ul>
+<li> <p><code>statatment</code>: the statement used with <code><a href="../../DBI/html/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../../DBI/html/dbExecute.html">dbExecute()</a></code>,
+as returned by <code><a href="../../DBI/html/dbGetStatement.html">dbGetStatement()</a></code>,
+</p>
+</li>
+<li> <p><code>row.count</code>: the number of rows fetched so far (for queries),
+as returned by <code><a href="../../DBI/html/dbGetRowCount.html">dbGetRowCount()</a></code>,
+</p>
+</li>
+<li> <p><code>rows.affected</code>: the number of rows affected (for statements),
+as returned by <code><a href="../../DBI/html/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>
+</p>
+</li>
+<li> <p><code>has.completed</code>: a logical that indicates
+if the query or statement has completed,
+as returned by <code><a href="../../DBI/html/dbHasCompleted.html">dbHasCompleted()</a></code>.
+</p>
+</li></ul>
+
+
+
+<h3>See Also</h3>
+
+<p>Other DBIDriver generics: 
+<code><a href="../../DBI/html/DBIDriver-class.html">DBIDriver-class</a></code>,
+<code><a href="../../DBI/html/dbCanConnect.html">dbCanConnect</a>()</code>,
+<code><a href="../../DBI/html/dbConnect.html">dbConnect</a>()</code>,
+<code><a href="../../DBI/html/dbDataType.html">dbDataType</a>()</code>,
+<code><a href="../../DBI/html/dbDriver.html">dbDriver</a>()</code>,
+<code><a href="../../DBI/html/dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
+<code><a href="../../DBI/html/dbIsValid.html">dbIsValid</a>()</code>,
+<code><a href="../../DBI/html/dbListConnections.html">dbListConnections</a>()</code>
+</p>
+<p>Other DBIConnection generics: 
+<code><a href="../../DBI/html/DBIConnection-class.html">DBIConnection-class</a></code>,
+<code><a href="../../DBI/html/dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="../../DBI/html/dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="../../DBI/html/dbDataType.html">dbDataType</a>()</code>,
+<code><a href="../../DBI/html/dbDisconnect.html">dbDisconnect</a>()</code>,
+<code><a href="../../DBI/html/dbExecute.html">dbExecute</a>()</code>,
+<code><a href="../../DBI/html/dbExistsTable.html">dbExistsTable</a>()</code>,
+<code><a href="../../DBI/html/dbGetException.html">dbGetException</a>()</code>,
+<code><a href="../../DBI/html/dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="../../DBI/html/dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
+<code><a href="../../DBI/html/dbIsValid.html">dbIsValid</a>()</code>,
+<code><a href="../../DBI/html/dbListFields.html">dbListFields</a>()</code>,
+<code><a href="../../DBI/html/dbListObjects.html">dbListObjects</a>()</code>,
+<code><a href="../../DBI/html/dbListResults.html">dbListResults</a>()</code>,
+<code><a href="../../DBI/html/dbListTables.html">dbListTables</a>()</code>,
+<code><a href="../../DBI/html/dbReadTable.html">dbReadTable</a>()</code>,
+<code><a href="../../DBI/html/dbRemoveTable.html">dbRemoveTable</a>()</code>,
+<code><a href="../../DBI/html/dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="../../DBI/html/dbSendStatement.html">dbSendStatement</a>()</code>,
+<code><a href="../../DBI/html/dbWriteTable.html">dbWriteTable</a>()</code>
+</p>
+<p>Other DBIResult generics: 
+<code><a href="../../DBI/html/DBIResult-class.html">DBIResult-class</a></code>,
+<code><a href="../../DBI/html/dbBind.html">dbBind</a>()</code>,
+<code><a href="../../DBI/html/dbClearResult.html">dbClearResult</a>()</code>,
+<code><a href="../../DBI/html/dbColumnInfo.html">dbColumnInfo</a>()</code>,
+<code><a href="../../DBI/html/dbFetch.html">dbFetch</a>()</code>,
+<code><a href="../../DBI/html/dbGetRowCount.html">dbGetRowCount</a>()</code>,
+<code><a href="../../DBI/html/dbGetRowsAffected.html">dbGetRowsAffected</a>()</code>,
+<code><a href="../../DBI/html/dbGetStatement.html">dbGetStatement</a>()</code>,
+<code><a href="../../DBI/html/dbHasCompleted.html">dbHasCompleted</a>()</code>,
+<code><a href="../../DBI/html/dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
+<code><a href="../../DBI/html/dbIsValid.html">dbIsValid</a>()</code>,
+<code><a href="../../DBI/html/dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
+<code><a href="../../DBI/html/dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
+<code><a href="../../DBI/html/dbQuoteString.html">dbQuoteString</a>()</code>,
+<code><a href="../../DBI/html/dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>DatabaseConnector</em> version 6.3.2 <a href="00Index.html">Index</a>]</div>
+</body></html>
